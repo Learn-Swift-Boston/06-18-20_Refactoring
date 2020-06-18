@@ -8,31 +8,12 @@
 
 import UIKit
 
-class TableHeaderView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
+class TableHeaderView: UIView {
 
     @IBOutlet weak var textField: UITextField!
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return SubReddit.allCases.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textField.resignFirstResponder()
-        textField.text = SubReddit.allCases[row].rawValue
-        
-        guard let table = UIApplication.shared.keyWindow?.rootViewController as? SubredditTableViewController else { return }
-        table.get(subreddit: SubReddit.allCases[row])
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        SubReddit.allCases[row].rawValue
-    }
-
     var subredditPicker = UIPickerView()
     
+    // MARK: - Lifecycle
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
@@ -43,5 +24,31 @@ class TableHeaderView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         subredditPicker.dataSource = self
         subredditPicker.delegate = self
     }
+}
 
+// MARK: - UIPickerViewDelegate
+extension TableHeaderView: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        SubReddit.allCases[row].rawValue
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textField.resignFirstResponder()
+        textField.text = SubReddit.allCases[row].rawValue
+        
+        guard let table = UIApplication.shared.keyWindow?.rootViewController as? SubredditTableViewController else { return }
+        table.get(subreddit: SubReddit.allCases[row])
+    }
+    
+}
+
+// MARK: - UIPickerViewDataSource
+extension TableHeaderView: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return SubReddit.allCases.count
+    }
 }
