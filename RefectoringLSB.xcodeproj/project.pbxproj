@@ -17,6 +17,8 @@
 		6D3DDACA2495635400C8F4D3 /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3DDAC92495635400C8F4D3 /* TableHeaderView.swift */; };
 		6D3DDACC2495636400C8F4D3 /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D3DDACB2495636400C8F4D3 /* TableHeaderView.xib */; };
 		6D3DDAD22495683600C8F4D3 /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3DDAD12495683600C8F4D3 /* FullImageViewController.swift */; };
+		6D3DDAD5249C2EF200C8F4D3 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3DDAD4249C2EF200C8F4D3 /* ResponseModels.swift */; };
+		6D3DDAD7249C2F1C00C8F4D3 /* Subreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3DDAD6249C2F1C00C8F4D3 /* Subreddit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		6D3DDAC92495635400C8F4D3 /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
 		6D3DDACB2495636400C8F4D3 /* TableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableHeaderView.xib; sourceTree = "<group>"; };
 		6D3DDAD12495683600C8F4D3 /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
+		6D3DDAD4249C2EF200C8F4D3 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
+		6D3DDAD6249C2F1C00C8F4D3 /* Subreddit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subreddit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		6D3DDAAA249548BE00C8F4D3 /* RefectoringLSB */ = {
 			isa = PBXGroup;
 			children = (
+				6D3DDAD3249C2EBE00C8F4D3 /* Models */,
 				6D3DDAAB249548BE00C8F4D3 /* AppDelegate.swift */,
 				6D3DDAAD249548BE00C8F4D3 /* SceneDelegate.swift */,
 				6D3DDAB1249548BE00C8F4D3 /* Main.storyboard */,
@@ -77,6 +82,15 @@
 				6D3DDAD12495683600C8F4D3 /* FullImageViewController.swift */,
 			);
 			path = RefectoringLSB;
+			sourceTree = "<group>";
+		};
+		6D3DDAD3249C2EBE00C8F4D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6D3DDAD4249C2EF200C8F4D3 /* ResponseModels.swift */,
+				6D3DDAD6249C2F1C00C8F4D3 /* Subreddit.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,12 +165,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D3DDAD7249C2F1C00C8F4D3 /* Subreddit.swift in Sources */,
 				6D3DDACA2495635400C8F4D3 /* TableHeaderView.swift in Sources */,
 				6D3DDAC324954D5500C8F4D3 /* SubredditTableViewController.swift in Sources */,
 				6D3DDAAC249548BE00C8F4D3 /* AppDelegate.swift in Sources */,
 				6D3DDAAE249548BE00C8F4D3 /* SceneDelegate.swift in Sources */,
 				6D3DDAC8249551D300C8F4D3 /* PostCell.swift in Sources */,
 				6D3DDAD22495683600C8F4D3 /* FullImageViewController.swift in Sources */,
+				6D3DDAD5249C2EF200C8F4D3 /* ResponseModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

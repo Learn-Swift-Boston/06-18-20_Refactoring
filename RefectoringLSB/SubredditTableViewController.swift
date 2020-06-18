@@ -8,33 +8,6 @@
 
 import UIKit
 
-enum SubReddit: String, CaseIterable {
-    case aww
-    case earthporn
-    case battlestations
-}
-struct Post: Codable {
-    var title: String
-    var url: String
-    var image: UIImage?
-    
-    private enum CodingKeys: String, CodingKey {
-        case title, url
-    }
-}
-
-struct SubredditChildren: Codable {
-    var data: Post
-}
-
-struct SubredditData: Codable {
-    var children: [SubredditChildren]
-}
-
-struct SubredditResponse: Codable {
-    var data: SubredditData
-}
-
 class SubredditTableViewController: UITableViewController {
     
     var posts = [Post]() {
