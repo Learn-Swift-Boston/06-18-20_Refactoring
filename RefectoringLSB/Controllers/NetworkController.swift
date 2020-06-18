@@ -23,18 +23,17 @@ struct NetworkController {
             let responsePosts = response.data.children.map({ $0.data })
             
             responsePosts.forEach { post in
-                dispatchGroup.enter()
                 guard let imageURL = URL(string: post.url) else { return }
                 
-                URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+                dispatchGroup.enter()
+                
+                NetworkController.get(image: imageURL) { image in
                     dispatchGroup.leave()
-                    guard let data = data else { return }
-                    guard let image = UIImage(data: data) else { return }
                     
                     var postWithImage = post
                     postWithImage.image = image
                     posts.append(postWithImage)
-                }.resume()
+                }
             }
             
             dispatchGroup.leave()
@@ -43,5 +42,17 @@ struct NetworkController {
         dispatchGroup.notify(queue: DispatchQueue.main) {
             completion(posts)
         }
+    }
+    
+    static func get(image url: URL, completion: @escaping (UIImage?) -> Void) {
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data, let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+            
+            completion(image)
+        }.resume()
     }
 }
