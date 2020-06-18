@@ -60,9 +60,25 @@ class SubredditTableViewController: UITableViewController {
             self.posts = posts
         }
     }
+    
+}
 
-    // MARK: - Table view data source
+// MARK: - Navigation
+extension SubredditTableViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let modal = segue.destination as? FullImageViewController,
+              let cell = sender as? PostCell,
+              let indexPath = tableView.indexPath(for: cell) else {
+                
+            return
+        }
+        
+        modal.image = posts[indexPath.row].image
+    }
+}
 
+// MARK: - Table view data source
+extension SubredditTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -82,17 +98,4 @@ class SubredditTableViewController: UITableViewController {
 
         return cell
     }
-
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let modal = segue.destination as? FullImageViewController,
-              let cell = sender as? PostCell,
-              let indexPath = tableView.indexPath(for: cell) else {
-                
-            return
-        }
-        
-        modal.image = posts[indexPath.row].image
-    }
-    
 }
