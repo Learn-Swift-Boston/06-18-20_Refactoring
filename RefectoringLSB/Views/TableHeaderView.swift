@@ -12,6 +12,7 @@ class TableHeaderView: UIView {
 
     @IBOutlet weak var textField: UITextField!
     var subredditPicker = UIPickerView()
+    weak var swappableDelegate: SubredditSwappable?
     
     // MARK: - Lifecycle
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -36,10 +37,8 @@ extension TableHeaderView: UIPickerViewDelegate {
         textField.resignFirstResponder()
         textField.text = SubReddit.allCases[row].rawValue
         
-        guard let table = UIApplication.shared.keyWindow?.rootViewController as? SubredditTableViewController else { return }
-        table.get(subreddit: SubReddit.allCases[row])
+        swappableDelegate?.get(subreddit: SubReddit.allCases[row])
     }
-    
 }
 
 // MARK: - UIPickerViewDataSource

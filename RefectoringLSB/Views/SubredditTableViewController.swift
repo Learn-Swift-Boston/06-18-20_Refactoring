@@ -21,17 +21,20 @@ class SubredditTableViewController: UITableViewController {
 
         let headerView = Bundle.main.loadNibNamed("TableHeaderView", owner: nil, options: nil)!.first as! TableHeaderView
         headerView.textField.text = SubReddit.aww.rawValue
+        headerView.swappableDelegate = self
         tableView.tableHeaderView = headerView
         
         get(subreddit: .aww)
     }
-    
+}
+
+// MARK: - SubredditSwappable
+extension SubredditTableViewController: SubredditSwappable {
     func get(subreddit: SubReddit) {
         NetworkController.get(subreddit: subreddit) { posts in
             self.posts = posts
         }
     }
-    
 }
 
 // MARK: - Navigation
